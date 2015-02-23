@@ -1,0 +1,4 @@
+[
+ [:app :lt.objs.plugins/load-js "lt_gherkin_compiled.js"]
+ [:lt-gherkin.hello :lt.plugins.lt-gherkin/on-close-destroy]
+ ]

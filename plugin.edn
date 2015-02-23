@@ -1,0 +1,6 @@
+{:name "lt_gherkin"
+ :version "0.0.1"
+ :author "Brendan Bates"
+ :source ""
+ :desc "Gherkin (cucumber) support for lighttable"
+ :behaviors "lt_gherkin.behaviors"}
