@@ -1,4 +1,5 @@
 [
- [:app :lt.objs.plugins/load-js "lt_gherkin_compiled.js"]
- [:lt-gherkin.hello :lt.plugins.lt-gherkin/on-close-destroy]
+ [:app :lt.objs.plugins/load-js ["codemirror/gherkin.js" "gherkin_compiled.js"]]
+
+ [:files :lt.objs.files/file-types [{:exts [:feature], :mime "text/x-feature", :tags [:editor.gherkin], :name "Gherkin"}]]
  ]
