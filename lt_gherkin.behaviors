@@ -1,5 +1,3 @@
-[
- [:app :lt.objs.plugins/load-js ["codemirror/gherkin.js" "gherkin_compiled.js"]]
+[[:app :lt.objs.plugins/load-js ["codemirror/gherkin.js" "gherkin_compiled.js"]]
 
- [:files :lt.objs.files/file-types [{:exts [:feature], :mime "text/x-feature", :tags [:editor.gherkin], :name "Gherkin"}]]
- ]
+ [:files :lt.objs.files/file-types [{:exts [:feature], :mime "text/x-feature", :tags [:editor.gherkin], :name "Gherkin"}]]]
