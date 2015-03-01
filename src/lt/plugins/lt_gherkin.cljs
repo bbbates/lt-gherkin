@@ -124,8 +124,3 @@
               :exec (fn []
                       (when-let [ed (pool/last-active)]
                         (format-gherkin-editor ed)))})
-
-
-;;TODO:
-;; - format on save gherkin file?
-

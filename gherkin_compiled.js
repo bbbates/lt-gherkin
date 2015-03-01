@@ -24,13 +24,13 @@ lt.plugins.lt_gherkin.indent_line = (function indent_line(indent,line){return cl
 });
 lt.plugins.lt_gherkin.format_table = (function format_table(table_rows,indent){var column_cnt = cljs.core.apply.call(null,cljs.core.max,cljs.core.map.call(null,cljs.core.count,table_rows));var max_chars_by_column = cljs.core.map.call(null,((function (column_cnt){
 return (function (col){return cljs.core.apply.call(null,cljs.core.max,cljs.core.map.call(null,((function (column_cnt){
-return (function (p1__10352_SHARP_){return cljs.core.count.call(null,cljs.core.get.call(null,p1__10352_SHARP_,col,""));
+return (function (p1__10404_SHARP_){return cljs.core.count.call(null,cljs.core.get.call(null,p1__10404_SHARP_,col,""));
 });})(column_cnt))
 ,table_rows));
 });})(column_cnt))
 ,cljs.core.range.call(null,0,column_cnt));return clojure.string.join.call(null,"\n",cljs.core.map.call(null,cljs.core.comp.call(null,cljs.core.partial.call(null,lt.plugins.lt_gherkin.indent_line,indent),cljs.core.partial.call(null,lt.plugins.lt_gherkin.join_table_cells,max_chars_by_column)),table_rows));
 });
-lt.plugins.lt_gherkin.format_line = (function format_line(indent,p__10353,current_line){var map__10355 = p__10353;var map__10355__$1 = ((cljs.core.seq_QMARK_.call(null,map__10355))?cljs.core.apply.call(null,cljs.core.hash_map,map__10355):map__10355);var state = map__10355__$1;var delayed_lines = cljs.core.get.call(null,map__10355__$1,new cljs.core.Keyword(null,"delayed-lines","delayed-lines",3725506118));var current_table = cljs.core.get.call(null,map__10355__$1,new cljs.core.Keyword(null,"current-table","current-table",2168799724));var last_indent = cljs.core.get.call(null,map__10355__$1,new cljs.core.Keyword(null,"last-indent","last-indent",1332135733));var match_later_indent_QMARK_ = cljs.core.get.call(null,map__10355__$1,new cljs.core.Keyword(null,"match-later-indent?","match-later-indent?",1708507196));var table_QMARK_ = cljs.core.get.call(null,map__10355__$1,new cljs.core.Keyword(null,"table?","table?",4427493795));var formatted_table = (((cljs.core.not.call(null,table_QMARK_)) && (cljs.core.seq.call(null,current_table)))?lt.plugins.lt_gherkin.format_table.call(null,current_table,last_indent):null);var current_line_str = (cljs.core.truth_(table_QMARK_)?null:clojure.string.join.call(null,"\n",cljs.core.conj.call(null,cljs.core.mapv.call(null,cljs.core.partial.call(null,lt.plugins.lt_gherkin.indent_line,indent),delayed_lines),lt.plugins.lt_gherkin.indent_line.call(null,indent,current_line))));if(cljs.core.truth_(table_QMARK_))
+lt.plugins.lt_gherkin.format_line = (function format_line(indent,p__10405,current_line){var map__10407 = p__10405;var map__10407__$1 = ((cljs.core.seq_QMARK_.call(null,map__10407))?cljs.core.apply.call(null,cljs.core.hash_map,map__10407):map__10407);var state = map__10407__$1;var delayed_lines = cljs.core.get.call(null,map__10407__$1,new cljs.core.Keyword(null,"delayed-lines","delayed-lines",3725506118));var current_table = cljs.core.get.call(null,map__10407__$1,new cljs.core.Keyword(null,"current-table","current-table",2168799724));var last_indent = cljs.core.get.call(null,map__10407__$1,new cljs.core.Keyword(null,"last-indent","last-indent",1332135733));var match_later_indent_QMARK_ = cljs.core.get.call(null,map__10407__$1,new cljs.core.Keyword(null,"match-later-indent?","match-later-indent?",1708507196));var table_QMARK_ = cljs.core.get.call(null,map__10407__$1,new cljs.core.Keyword(null,"table?","table?",4427493795));var formatted_table = (((cljs.core.not.call(null,table_QMARK_)) && (cljs.core.seq.call(null,current_table)))?lt.plugins.lt_gherkin.format_table.call(null,current_table,last_indent):null);var current_line_str = (cljs.core.truth_(table_QMARK_)?null:clojure.string.join.call(null,"\n",cljs.core.conj.call(null,cljs.core.mapv.call(null,cljs.core.partial.call(null,lt.plugins.lt_gherkin.indent_line,indent),delayed_lines),lt.plugins.lt_gherkin.indent_line.call(null,indent,current_line))));if(cljs.core.truth_(table_QMARK_))
 {return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [null,cljs.core.assoc.call(null,state,new cljs.core.Keyword(null,"current-table","current-table",2168799724),cljs.core.conj.call(null,current_table,cljs.core.mapv.call(null,clojure.string.trim,cljs.core.rest.call(null,clojure.string.split.call(null,current_line,/\|/)))))], null);
 } else
 {if(cljs.core.truth_(match_later_indent_QMARK_))
@@ -50,25 +50,25 @@ lt.plugins.lt_gherkin.format_line = (function format_line(indent,p__10353,curren
 });
 lt.plugins.lt_gherkin.format_gherkin = (function format_gherkin(src){var all_lines = cljs.core.map.call(null,clojure.string.trim,clojure.string.split_lines.call(null,src));var state = new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"last-indent","last-indent",1332135733),0,new cljs.core.Keyword(null,"current-table","current-table",2168799724),cljs.core.PersistentVector.EMPTY,new cljs.core.Keyword(null,"delayed-lines","delayed-lines",3725506118),cljs.core.PersistentVector.EMPTY], null);var lines = all_lines;var formatted_gherkin = null;while(true){
 var temp__4090__auto__ = cljs.core.first.call(null,lines);if(cljs.core.truth_(temp__4090__auto__))
-{var current_line = temp__4090__auto__;var map__10361 = cljs.core.first.call(null,cljs.core.filter.call(null,((function (state,lines,formatted_gherkin,current_line,temp__4090__auto__,all_lines){
-return (function (p__10363){var map__10364 = p__10363;var map__10364__$1 = ((cljs.core.seq_QMARK_.call(null,map__10364))?cljs.core.apply.call(null,cljs.core.hash_map,map__10364):map__10364);var regex = cljs.core.get.call(null,map__10364__$1,new cljs.core.Keyword(null,"regex","regex",1122296761));return cljs.core.re_find.call(null,regex,current_line);
+{var current_line = temp__4090__auto__;var map__10413 = cljs.core.first.call(null,cljs.core.filter.call(null,((function (state,lines,formatted_gherkin,current_line,temp__4090__auto__,all_lines){
+return (function (p__10415){var map__10416 = p__10415;var map__10416__$1 = ((cljs.core.seq_QMARK_.call(null,map__10416))?cljs.core.apply.call(null,cljs.core.hash_map,map__10416):map__10416);var regex = cljs.core.get.call(null,map__10416__$1,new cljs.core.Keyword(null,"regex","regex",1122296761));return cljs.core.re_find.call(null,regex,current_line);
 });})(state,lines,formatted_gherkin,current_line,temp__4090__auto__,all_lines))
-,lt.plugins.lt_gherkin.line_classifiers));var map__10361__$1 = ((cljs.core.seq_QMARK_.call(null,map__10361))?cljs.core.apply.call(null,cljs.core.hash_map,map__10361):map__10361);var indent = cljs.core.get.call(null,map__10361__$1,new cljs.core.Keyword(null,"indent","indent",4124632094));var state_delta = cljs.core.get.call(null,map__10361__$1,new cljs.core.Keyword(null,"state","state",1123661827));var vec__10362 = lt.plugins.lt_gherkin.format_line.call(null,(function (){var or__7200__auto__ = indent;if(cljs.core.truth_(or__7200__auto__))
+,lt.plugins.lt_gherkin.line_classifiers));var map__10413__$1 = ((cljs.core.seq_QMARK_.call(null,map__10413))?cljs.core.apply.call(null,cljs.core.hash_map,map__10413):map__10413);var indent = cljs.core.get.call(null,map__10413__$1,new cljs.core.Keyword(null,"indent","indent",4124632094));var state_delta = cljs.core.get.call(null,map__10413__$1,new cljs.core.Keyword(null,"state","state",1123661827));var vec__10414 = lt.plugins.lt_gherkin.format_line.call(null,(function (){var or__7200__auto__ = indent;if(cljs.core.truth_(or__7200__auto__))
 {return or__7200__auto__;
 } else
 {return new cljs.core.Keyword(null,"last-indent","last-indent",1332135733).cljs$core$IFn$_invoke$arity$1(state);
 }
-})(),cljs.core.merge.call(null,state,state_delta),current_line);var formatted_line = cljs.core.nth.call(null,vec__10362,0,null);var state_delta__$1 = cljs.core.nth.call(null,vec__10362,1,null);{
-var G__10366 = cljs.core.merge.call(null,state,state_delta__$1);
-var G__10367 = cljs.core.rest.call(null,lines);
-var G__10368 = (cljs.core.truth_(formatted_line)?clojure.string.join.call(null,"\n",cljs.core.filter.call(null,cljs.core.identity,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [formatted_gherkin,formatted_line], null))):formatted_gherkin);
-state = G__10366;
-lines = G__10367;
-formatted_gherkin = G__10368;
+})(),cljs.core.merge.call(null,state,state_delta),current_line);var formatted_line = cljs.core.nth.call(null,vec__10414,0,null);var state_delta__$1 = cljs.core.nth.call(null,vec__10414,1,null);{
+var G__10418 = cljs.core.merge.call(null,state,state_delta__$1);
+var G__10419 = cljs.core.rest.call(null,lines);
+var G__10420 = (cljs.core.truth_(formatted_line)?clojure.string.join.call(null,"\n",cljs.core.filter.call(null,cljs.core.identity,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [formatted_gherkin,formatted_line], null))):formatted_gherkin);
+state = G__10418;
+lines = G__10419;
+formatted_gherkin = G__10420;
 continue;
 }
 } else
-{var vec__10365 = lt.plugins.lt_gherkin.format_line.call(null,new cljs.core.Keyword(null,"last-indent","last-indent",1332135733).cljs$core$IFn$_invoke$arity$1(state),cljs.core.assoc.call(null,state,new cljs.core.Keyword(null,"table?","table?",4427493795),false,new cljs.core.Keyword(null,"match-later-indent?","match-later-indent?",1708507196),false),"");var formatted_line = cljs.core.nth.call(null,vec__10365,0,null);return clojure.string.join.call(null,"\n",cljs.core.filter.call(null,cljs.core.identity,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [formatted_gherkin,formatted_line], null)));
+{var vec__10417 = lt.plugins.lt_gherkin.format_line.call(null,new cljs.core.Keyword(null,"last-indent","last-indent",1332135733).cljs$core$IFn$_invoke$arity$1(state),cljs.core.assoc.call(null,state,new cljs.core.Keyword(null,"table?","table?",4427493795),false,new cljs.core.Keyword(null,"match-later-indent?","match-later-indent?",1708507196),false),"");var formatted_line = cljs.core.nth.call(null,vec__10417,0,null);return clojure.string.join.call(null,"\n",cljs.core.filter.call(null,cljs.core.identity,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [formatted_gherkin,formatted_line], null)));
 }
 break;
 }
