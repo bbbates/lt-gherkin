@@ -42,13 +42,21 @@
     :indent 4
     :state {:table? false}}
 
-   ;; tag
-   {:regex #"@\S+"
-    :state {:table? false}}
-
    ;; table
    {:regex #"\|\s*"
-    :state {:table? true}}])
+    :state {:table? true}}
+
+   ;; tag
+   {:regex #"@\S+" ;;TODO: tag regex could probably be smarter...
+    :state {:table? false}}
+
+   ;; comment
+   {:regex #"^\s+#\S+"
+    :state {:table? false}}
+
+   ;; everything else
+   {:regex #".*"
+    :state {:table? false}}])
 
 (defn- join-table-cells
   [max-chars-by-column row]
@@ -90,12 +98,13 @@
         (let [{indent :indent state-delta :state} (first (filter (fn [{:keys [regex]}]
                                                                    (re-find regex current-line))
                                                                  line-classifiers))
-              [formatted-line state-delta] (format-line (or indent (:last-indent state-delta)) (merge state state-delta) current-line)]
+              [formatted-line state-delta] (format-line (or indent (:last-indent state)) (merge state state-delta) current-line)]
           (recur (merge state state-delta)
                  (rest lines)
                  (if formatted-line (join "\n" (filter identity [formatted-gherkin formatted-line])) formatted-gherkin)))
-        (join "\n"
-              (filter identity [formatted-gherkin (first (format-line (:last-indent state) (assoc state :table? false) ""))]))))))
+        (let [[formatted-line] (format-line (:last-indent state) (assoc state :table? false) "")]
+          (join "\n"
+                (filter identity [formatted-gherkin formatted-line])))))))
 
 (defn- format-gherkin-editor
   [ed]
