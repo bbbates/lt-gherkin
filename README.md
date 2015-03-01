@@ -10,7 +10,7 @@ via Lighttable plugin manager.
 
 ## Usage
 
-- To format your feature file, run the "Gherkin: "
+- To format your feature file, run the "Gherkin: format gherkin file"
 - To format feature files automatically on save, add the following user behaviour:
 
 ```
